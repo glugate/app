@@ -1,0 +1,32 @@
+/* Reset */
+@import 'tailwindcss/base.css';
+@import 'reset';
+
+/* Components */
+@import 'tailwindcss/components';
+@import 'buttons';
+@import 'form';
+
+/* Utilities */
+@import 'tailwindcss/utilities';
+
+body {
+    font-family: 'Public Sans', sans-serif;
+}
+
+
+
+.menu {
+    color: rgba(51, 48, 60, 0.68);
+    font-size: 16px;
+    letter-spacing: 0.15px;
+    line-height: 24px;
+}
+
+.nav-link > .a {
+    background: rgba(59, 130, 246, 0.6);
+}
+
+.text-link-main {
+    @apply text-main-600
+}
