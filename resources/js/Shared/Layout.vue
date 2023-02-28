@@ -41,8 +41,8 @@
             </dropdown>
           </div>
         </div>
-        <div class="md:flex md:flex-grow md:overflow-hidden">
-          <main-menu class="hidden flex-shrink-0 pt-6 w-56 bg-white overflow-y-auto md:block" />
+        <div class="md:flex md:flex-grow md:overflow-hidden ">
+          <main-menu class="hidden flex-shrink-0 pt-6 w-56 bg-white overflow-y-auto shadow md:block" />
           <div class="px-4 py-8 md:flex-1 md:p-12 md:overflow-y-auto" scroll-region>
             <flash-messages />
             <slot />
