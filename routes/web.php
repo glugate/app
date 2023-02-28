@@ -73,6 +73,10 @@ Route::post('organizations', [OrganizationsController::class, 'store'])
     ->name('organizations.store')
     ->middleware('auth');
 
+Route::get('organizations/{organization}', [OrganizationsController::class, 'view'])
+    ->name('organizations.view')
+    ->middleware('auth');
+
 Route::get('organizations/{organization}/edit', [OrganizationsController::class, 'edit'])
     ->name('organizations.edit')
     ->middleware('auth');

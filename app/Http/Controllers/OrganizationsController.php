@@ -52,6 +52,25 @@ class OrganizationsController extends Controller
         return Redirect::route('organizations')->with('success', 'Organization created.');
     }
 
+    public function view(Organization $organization)
+    {
+        return Inertia::render('Organizations/View', [
+            'organization' => [
+                'id' => $organization->id,
+                'name' => $organization->name,
+                'email' => $organization->email,
+                'phone' => $organization->phone,
+                'address' => $organization->address,
+                'city' => $organization->city,
+                'region' => $organization->region,
+                'country' => $organization->country,
+                'postal_code' => $organization->postal_code,
+                'deleted_at' => $organization->deleted_at,
+                'contacts' => $organization->contacts()->orderByName()->get()->map->only('id', 'name', 'city', 'phone'),
+            ],
+        ]);
+    }
+
     public function edit(Organization $organization)
     {
         return Inertia::render('Organizations/Edit', [
