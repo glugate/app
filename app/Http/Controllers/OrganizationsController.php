@@ -23,6 +23,7 @@ class OrganizationsController extends Controller
                     'id' => $organization->id,
                     'name' => $organization->name,
                     'phone' => $organization->phone,
+                    'country' => $organization->country,
                     'city' => $organization->city,
                     'deleted_at' => $organization->deleted_at,
                 ]),
