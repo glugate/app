@@ -12,7 +12,7 @@ import ResourceHeader from '@/Shared/ResourceHeader.vue'
 import Layout from '@/Layouts/Layout.vue'
 import TextInput from '@/Shared/TextInput.vue'
 import SelectInput from '@/Shared/SelectInput.vue'
-import LoadingButton from '@/Shared/LoadingButton.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue'
 import TrashedMessage from '@/Shared/TrashedMessage.vue'
 
 export default {
@@ -20,7 +20,7 @@ export default {
     Head,
     Icon,
     Link,
-    LoadingButton,
+    PrimaryButton,
     ResourceHeader,
     SelectInput,
     TextInput,
