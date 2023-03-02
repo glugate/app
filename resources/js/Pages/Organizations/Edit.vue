@@ -26,7 +26,7 @@
         </div>
         <div class="flex items-center px-8 py-4 bg-gray-50 border-t border-gray-100">
           <button v-if="!organization.deleted_at" class="text-red-600 hover:underline" tabindex="-1" type="button" @click="destroy">Delete Organization</button>
-          <loading-button :loading="form.processing" class="btn-main ml-auto" type="submit">Update Organization</loading-button>
+          <primary-button :loading="form.processing" class="btn-main ml-auto" type="submit">Update Organization</primary-button>
         </div>
       </form>
     </div>
@@ -72,7 +72,7 @@
 <script>
 import { Head, Link } from '@inertiajs/vue3'
 import Icon from '@/Shared/Icon.vue'
-import Layout from '@/Shared/Layout.vue'
+import Layout from '@/Layouts/Layout.vue'
 import TextInput from '@/Shared/TextInput.vue'
 import SelectInput from '@/Shared/SelectInput.vue'
 import LoadingButton from '@/Shared/LoadingButton.vue'

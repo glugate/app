@@ -1,4 +1,4 @@
-const buildResourceInfo = (resourceNameSingular, resourceNamePlural=null) => {
+const buildResourceInfo = (resourceNameSingular: String, resourceNamePlural=null) => {
     return "ok"
 }
 

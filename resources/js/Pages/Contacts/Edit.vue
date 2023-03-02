@@ -2,7 +2,7 @@
   <div>
     <Head :title="`${form.first_name} ${form.last_name}`" />
     <h1 class="mb-8 text-3xl font-bold">
-      <Link class="text-link-main" href="/contacts">Contacts</Link>
+      <Link class="text-link-main" href="/contacts">Contacts XS</Link>
       <span class="text-link-main font-medium">/</span>
       {{ form.first_name }} {{ form.last_name }}
     </h1>
@@ -31,7 +31,7 @@
         </div>
         <div class="flex items-center px-8 py-4 bg-gray-50 border-t border-gray-100">
           <button v-if="!contact.deleted_at" class="text-red-600 hover:underline" tabindex="-1" type="button" @click="destroy">Delete Contact</button>
-          <loading-button :loading="form.processing" class="btn-main ml-auto" type="submit">Update Contact</loading-button>
+          <primary-button :loading="form.processing" class="btn-main ml-auto" type="submit">Update Contact</primary-button>
         </div>
       </form>
     </div>
@@ -40,17 +40,17 @@
 
 <script>
 import { Head, Link } from '@inertiajs/vue3'
-import Layout from '@/Shared/Layout.vue'
+import Layout from '@/Layouts/Layout.vue'
 import TextInput from '@/Shared/TextInput.vue'
 import SelectInput from '@/Shared/SelectInput.vue'
-import LoadingButton from '@/Shared/LoadingButton.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue'
 import TrashedMessage from '@/Shared/TrashedMessage.vue'
 
 export default {
   components: {
     Head,
     Link,
-    LoadingButton,
+    PrimaryButton,
     SelectInput,
     TextInput,
     TrashedMessage,
@@ -79,6 +79,7 @@ export default {
   },
   methods: {
     update() {
+      console.log("form update: ", this.form)
       this.form.put(`/contacts/${this.contact.id}`)
     },
     destroy() {

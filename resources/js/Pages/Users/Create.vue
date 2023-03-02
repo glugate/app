@@ -19,7 +19,7 @@
           <file-input v-model="form.photo" :error="form.errors.photo" class="pb-8 pr-6 w-full lg:w-1/2" type="file" accept="image/*" label="Photo" />
         </div>
         <div class="flex items-center justify-end px-8 py-4 bg-gray-50 border-t border-gray-100">
-          <loading-button :loading="form.processing" class="btn-main" type="submit">Create User</loading-button>
+          <primary-button :loading="form.processing" class="btn-main" type="submit">Create User</primary-button>
         </div>
       </form>
     </div>
@@ -28,18 +28,18 @@
 
 <script>
 import { Head, Link } from '@inertiajs/vue3'
-import Layout from '@/Shared/Layout.vue'
+import Layout from '@/Layouts/Layout.vue'
 import FileInput from '@/Shared/FileInput.vue'
 import TextInput from '@/Shared/TextInput.vue'
 import SelectInput from '@/Shared/SelectInput.vue'
-import LoadingButton from '@/Shared/LoadingButton.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue'
 
 export default {
   components: {
     FileInput,
     Head,
     Link,
-    LoadingButton,
+    PrimaryButton,
     SelectInput,
     TextInput,
   },

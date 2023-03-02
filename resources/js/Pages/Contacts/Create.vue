@@ -28,7 +28,7 @@
           <text-input v-model="form.postal_code" :error="form.errors.postal_code" class="pb-8 pr-6 w-full lg:w-1/2" label="Postal code" />
         </div>
         <div class="flex items-center justify-end px-8 py-4 bg-gray-50 border-t border-gray-100">
-          <loading-button :loading="form.processing" class="btn-main" type="submit">Create Contact</loading-button>
+          <primary-button :loading="form.processing" class="btn-main" type="submit">Create Contact</primary-button>
         </div>
       </form>
     </div>
@@ -37,16 +37,16 @@
 
 <script>
 import { Head, Link } from '@inertiajs/vue3'
-import Layout from '@/Shared/Layout.vue'
+import Layout from '@/Layouts/Layout.vue'
 import TextInput from '@/Shared/TextInput.vue'
 import SelectInput from '@/Shared/SelectInput.vue'
-import LoadingButton from '@/Shared/LoadingButton.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue'
 
 export default {
   components: {
     Head,
     Link,
-    LoadingButton,
+    PrimaryButton,
     SelectInput,
     TextInput,
   },

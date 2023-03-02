@@ -93,9 +93,9 @@ const onFieldChange = (o, v) => {
 
 
             <div class="flex mt-4">
-                <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <primary-button type="submit" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Log in
-                </PrimaryButton>
+                </primary-button>
             </div>
         </form>
     </GuestLayout>

@@ -9,7 +9,7 @@
 import {Head, Link} from '@inertiajs/vue3'
 import Icon from '@/Shared/Icon.vue'
 import ResourceHeader from '@/Shared/ResourceHeader.vue'
-import Layout from '@/Shared/Layout.vue'
+import Layout from '@/Layouts/Layout.vue'
 import TextInput from '@/Shared/TextInput.vue'
 import SelectInput from '@/Shared/SelectInput.vue'
 import LoadingButton from '@/Shared/LoadingButton.vue'

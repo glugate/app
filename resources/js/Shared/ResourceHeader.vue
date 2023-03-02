@@ -14,7 +14,7 @@
           </a>
         </div>
         <div class="flex items-center">
-          <AppButton href="/organizations/create">Create {{resourceNameSingular}}</AppButton>
+          <primary-button href="/organizations/create">Create {{resourceNameSingular}}</primary-button>
         </div>
       </div>
     </div>
@@ -23,11 +23,11 @@
 
 <script>
 import { Link } from '@inertiajs/vue3'
-import AppButton from '@/Shared/AppButton.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue'
 import {v4 as uuid} from "uuid";
 export default {
   components: {
-    AppButton,
+    PrimaryButton,
     Link,
   },
   props: {

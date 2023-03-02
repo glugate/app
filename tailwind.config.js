@@ -2,13 +2,12 @@ const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-    purge: [
+    content: [
         // prettier-ignore
         './resources/**/*.blade.php',
         './resources/**/*.js',
         './resources/**/*.vue',
     ],
-    darkMode: false, // or 'media' or 'class'
     theme: {
         colors: {
             transparent: 'transparent',
@@ -31,6 +30,18 @@ module.exports = {
                 700: 'rgba(95, 129, 255, 0.8)',
                 800: 'rgba(95, 129, 255, 0.9)',
                 900: 'rgba(95, 129, 255, 1)',
+            },
+            secondary: {
+                50: 'rgba(222, 117, 12, 0.1)',
+                100: 'rgba(222, 117, 12, 0.2)',
+                200: 'rgba(222, 117, 12, 0.3)',
+                300: 'rgba(222, 117, 12, 0.4)',
+                400: 'rgba(222, 117, 12, 0.5)',
+                500: 'rgba(222, 117, 12, 0.6)',
+                600: 'rgba(222, 117, 12, 0.7)',
+                700: 'rgba(222, 117, 12, 0.8)',
+                800: 'rgba(222, 117, 12, 0.9)',
+                900: 'rgba(222, 117, 12, 1)',
             },
         },
         extend: {
