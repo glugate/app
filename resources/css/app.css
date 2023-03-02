@@ -23,5 +23,5 @@ body {
 }
 
 .text-link-main {
-    @apply text-main-600
+    @apply text-primary-600
 }

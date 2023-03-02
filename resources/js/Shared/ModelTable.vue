@@ -11,7 +11,7 @@
       <tbody>
       <tr v-for="item in list.data" :key="item.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
         <td class="border-t">
-          <Link class="flex items-center px-6 py-4 focus:text-main-500" :href="`/${resourceSlug}/${item.id}`">
+          <Link class="flex items-center px-6 py-4 focus:text-primary-500" :href="`/${resourceSlug}/${item.id}`">
             {{ item.name }}
             <icon v-if="item.deleted_at" name="trash" class="flex-shrink-0 ml-2 w-3 h-3 fill-gray-400" />
           </Link>

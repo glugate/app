@@ -4,7 +4,7 @@
     <div class="md:flex md:flex-col">
       <div class="md:flex md:flex-col md:h-screen">
         <div class="md:flex md:flex-shrink-0">
-          <div class="flex items-center justify-between px-6 py-4 bg-main-600 md:flex-shrink-0 md:justify-center md:w-56">
+          <div class="flex items-center justify-between px-6 py-4 bg-primary-600 md:flex-shrink-0 md:justify-center md:w-56">
             <Link class="mt-1" href="/">
               <logo class="fill-white" width="120" />
             </Link>
@@ -24,7 +24,7 @@
             <dropdown class="mt-1" placement="bottom-end">
               <template #default>
                 <div class="group flex items-center cursor-pointer select-none">
-                  <div class="mr-1 text-gray-700 focus:text-main-600 whitespace-nowrap">
+                  <div class="mr-1 text-gray-700 focus:text-primary-600 whitespace-nowrap">
                     <span>{{ auth.user.first_name }}</span>
                     <span class="hidden md:inline">&nbsp;{{ auth.user.last_name }}</span>
                   </div>
@@ -42,7 +42,7 @@
           </div>
         </div>
         <div class="md:flex md:flex-grow md:overflow-hidden ">
-          <the-sidebar />
+          <the-sidebar class="hidden flex-shrink-0 pt-6 w-56 bg-white overflow-y-auto shadow md:block" />
           <div class="px-4 py-8 md:flex-1 md:p-12 md:overflow-y-auto" scroll-region>
             <flash-messages />
             <slot />

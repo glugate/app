@@ -40,7 +40,7 @@
         </tr>
         <tr v-for="contact in organization.contacts" :key="contact.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
           <td class="border-t">
-            <Link class="flex items-center px-6 py-4 focus:text-main-500" :href="`/contacts/${contact.id}/edit`">
+            <Link class="flex items-center px-6 py-4 focus:text-primary-500" :href="`/contacts/${contact.id}/edit`">
               {{ contact.name }}
               <icon v-if="contact.deleted_at" name="trash" class="flex-shrink-0 ml-2 w-3 h-3 fill-gray-400" />
             </Link>
