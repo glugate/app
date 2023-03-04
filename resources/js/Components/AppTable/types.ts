@@ -1,12 +1,27 @@
-export type Item = Record<string, any>
+import {VNodeChild} from "vue";
+import { ResourceInfo } from "../../types";
 
-export type Header = {
-    text: string
-    value: string
-    sortable?: boolean
-    fixed?: boolean
-    width?: number
+export type ColumnKey = string | number
+export type InternalRowData = Record<string, unknown>
+export type RowData = Record<string, any>
+
+export type TableMeta = {
+    resourceInfo : ResourceInfo
 }
+
+export type TableBaseColumn<T = InternalRowData> = {
+    title?: TableColumnTitle,
+    key: ColumnKey,
+    linkable?: boolean,
+    render?: (rowData: T, rowIndex: number) => VNodeChild
+}
+
+export type TableColumnTitle =
+    | string
+    | ((column: TableBaseColumn) => VNodeChild)
+
+export type TableColumn<T = InternalRowData> = TableBaseColumn<T>
+export type TableColumns<T = InternalRowData> = Array<TableColumn<T>>
 
 export type PaginateLink = {
     url: string;

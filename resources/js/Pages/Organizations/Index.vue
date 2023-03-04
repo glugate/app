@@ -30,7 +30,6 @@ import mapValues from 'lodash/mapValues'
 import pickBy from 'lodash/pickBy'
 import throttle from 'lodash/throttle'
 
-import ModelTable from '@/Shared/ModelTable.vue'
 import AppTable from '@/Components/AppTable/Index.vue'
 import ResourceHeader from '@/Shared/ResourceHeader.vue'
 import SearchFilter from '@/Shared/SearchFilter.vue'
@@ -44,6 +43,27 @@ const form = reactive({
   search: props.filters.search,
   trashed: props.filters.trashed,
 })
+
+const createColumns = () => {
+  return [
+    {
+      title: 'Name',
+      key: 'name'
+    },
+    {
+      title: 'Country',
+      key: 'country'
+    },
+    {
+      title: 'City',
+      key: 'city'
+    },
+    {
+      title: 'Phone',
+      key: 'phone'
+    }
+  ]
+}
 
 watch(form, throttle(() => {
   router.get('/organizations', pickBy(form), { preserveState: true })

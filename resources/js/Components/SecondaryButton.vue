@@ -6,7 +6,7 @@
       class="flex text-white bg-secondary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center shadow-lg hover:bg-primary-700 dark:bg-primary-600 dark:hover:bg-primary-700"
       >
       <div v-if="loading" class="btn-spinner mr-2 mt-0.5" />
-      <slot/>[LINK] {{href}}
+      <slot/>
     </Link>
   </template>
   <template v-else>
@@ -16,7 +16,7 @@
       class="flex text-white bg-secondary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center shadow-lg hover:bg-primary-700 dark:bg-primary-600 dark:hover:bg-primary-700"
       >
       <div v-if="loading" class="btn-spinner mr-2 mt-0.5" />
-      <slot/>[Button]
+      <slot/>
     </button>
   </template>
 </template>

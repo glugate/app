@@ -5,7 +5,7 @@
         <div class="flex flex-col px-4 py-3 space-y-3 lg:flex-row lg:items-center lg:justify-between lg:space-y-0 lg:space-x-4">
           <div class="flex items-center flex-1 space-x-4">
             <h5>
-              <span class="text-gray-500">All Products:</span>
+              <span class="text-gray-500">All {{ resourceInfo.title_plural }}: </span>
               <span class="dark:text-white">{{ items.total }}</span>
             </h5>
           </div>
@@ -14,7 +14,7 @@
               <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
               </svg>
-              Add new product
+              Add new {{ resourceInfo.title_singular }}
             </button>
             <button type="button" class="flex items-center justify-center flex-shrink-0 px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
               <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -60,13 +60,8 @@
                     <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                   </div>
                 </td>
-                <th scope="row" class="flex items-center px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  <img src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-front-image.png" alt="iMac Front Image" class="w-auto h-8 mr-3">
-                  {{item.name}}
-                </th>
-                <td class="px-4 py-2">
-                  <span class="bg-primary-100 text-primary-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">{{item.country}}</span>
-                </td>
+                <table-cell :row="item" :column="columns[0]" :index="index" />
+                <table-cell :row="item" :column="columns[1]" :index="index" />
 
                 <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{item.city}}</td>
                 <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{item.phone}}</td>
@@ -114,43 +109,11 @@
         <nav class="flex flex-col items-start justify-between p-4 space-y-3 md:flex-row md:items-center md:space-y-0" aria-label="Table navigation">
               <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
                   Showing
-                  <span class="font-semibold text-gray-900 dark:text-white">1-10</span>
+                  <span class="font-semibold text-gray-900 dark:text-white">{{items.from}}-{{items.to}}</span>
                   of
-                  <span class="font-semibold text-gray-900 dark:text-white">1000</span>
+                  <span class="font-semibold text-gray-900 dark:text-white">{{items.total}}</span>
               </span>
-          <ul class="inline-flex items-stretch -space-x-px">
-            <li>
-              <a href="#" class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                <span class="sr-only">Previous</span>
-                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-                </svg>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="flex items-center justify-center px-3 py-2 text-sm leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-            </li>
-            <li>
-              <a href="#" class="flex items-center justify-center px-3 py-2 text-sm leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-            </li>
-            <li>
-              <a href="#" aria-current="page" class="z-10 flex items-center justify-center px-3 py-2 text-sm leading-tight border text-primary-600 bg-primary-50 border-primary-300 hover:bg-primary-100 hover:text-primary-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-            </li>
-            <li>
-              <a href="#" class="flex items-center justify-center px-3 py-2 text-sm leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">...</a>
-            </li>
-            <li>
-              <a href="#" class="flex items-center justify-center px-3 py-2 text-sm leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">100</a>
-            </li>
-            <li>
-              <a href="#" class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                <span class="sr-only">Next</span>
-                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                </svg>
-              </a>
-            </li>
-          </ul>
+          <pagination :links="items.links" class="inline-flex items-stretch -space-x-px" />
         </nav>
       </div>
     </div>
@@ -158,15 +121,57 @@
 </template>
 <script setup lang="ts">
 import { PropType } from 'vue';
-import type { Item } from "./types";
-import type { Paginate } from "./types";
+import { Link } from '@inertiajs/vue3';
+import { buildResourceInfo } from '../../Helpers/resourceMetaHelper';
+import type { Paginate, RowData, TableMeta } from './types';
+import Pagination from '@/Components/AppTable/Pagination.vue';
+import TableCell from "./TableCell.vue";
+
 
 const props = defineProps({
   items: {
-    type: Object as PropType<Paginate<Item>>,
+    type: Object as PropType<Paginate<RowData>>,
     required: true,
   },
+  resourceSlug: {
+    type: String,
+    required: true,
+  }
 })
+
+
+const columns = [
+  {
+    title: "Name",
+    key: "name",
+    linkable: true
+  },
+  {
+    title: "Country",
+    key: "country",
+    /*render(row: RowData){
+      return 'OK'
+    }*/
+  },
+  {
+    title: "City",
+    key: "city"
+  },
+  {
+    title: "Phone",
+    key: "phone"
+  },
+  {
+    title: "Address",
+    key: "address"
+  }
+]
+
+const tableMeta: TableMeta = {
+  resourceInfo: buildResourceInfo(props.resourceSlug)
+}
+
+const { resourceInfo } = tableMeta
 
 
 </script>

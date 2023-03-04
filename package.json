@@ -7,6 +7,8 @@
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.0",
         "@tailwindcss/forms": "^0.5.3",
+        "@types/lodash": "^4.14.191",
+        "@types/pluralize": "^0.0.29",
         "@vitejs/plugin-vue": "^4.0.0",
         "@vue/server-renderer": "^3.2.31",
         "autoprefixer": "^10.4.12",
@@ -20,6 +22,7 @@
     "dependencies": {
         "@popperjs/core": "^2.11.6",
         "lodash": "^4.17.21",
+        "pluralize": "^8.0.0",
         "typescript": "^4.9.5",
         "uuid": "^9.0.0"
     }

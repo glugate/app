@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
 
         User::factory(5)->create(['account_id' => $account->id]);
 
-        $organizations = Organization::factory(100)
+        $organizations = Organization::factory(120)
             ->create(['account_id' => $account->id]);
 
         Contact::factory(100)
