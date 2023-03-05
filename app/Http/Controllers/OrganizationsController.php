@@ -14,7 +14,7 @@ class OrganizationsController extends Controller
     {
         return Inertia::render('Organizations/Index', [
             'filters' => Request::all('search', 'trashed'),
-            'organizations' => Auth::user()->account->organizations()
+            'items' => Auth::user()->account->organizations()
                 ->orderBy('name')
                 ->filter(Request::only('search', 'trashed'))
                 ->paginate(10)
@@ -25,6 +25,7 @@ class OrganizationsController extends Controller
                     'phone' => $organization->phone,
                     'country' => $organization->country,
                     'city' => $organization->city,
+                    'address' => $organization->address,
                     'deleted_at' => $organization->deleted_at,
                 ]),
         ]);

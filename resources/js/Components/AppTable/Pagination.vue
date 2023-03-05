@@ -11,21 +11,23 @@
                 'bg-white hover:bg-white': !link.active
               }"
               :href="link.url"
-              v-html="link.label" />
+             >{{ link.label }}</Link>
       </template>
     </div>
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import { Link } from '@inertiajs/vue3'
 
-export default {
-  components: {
-    Link,
-  },
-  props: {
-    links: Array,
-  },
+interface ILink {
+  url: string,
+  label: string,
+  active: boolean
 }
+
+defineProps<{
+  links: ILink[]
+}>()
+
 </script>

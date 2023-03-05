@@ -5,15 +5,31 @@ export type ColumnKey = string | number
 export type InternalRowData = Record<string, unknown>
 export type RowData = Record<string, any>
 
-export type TableMeta = {
-    resourceInfo : ResourceInfo
-}
+// See https://laravel.com/docs/master/migrations#creating-columns
+export type TableColumnType =
+    | 'boolean'
+    | 'dateTime'
+    | 'date'
+    | 'decimal'
+    | 'enum'
+    | 'float'
+    | 'foreignId' // Link to related object ex: Contact.account_id to the related Account
+    | 'id'
+    | 'integer'
+    | 'string'
+    | 'text'
+    | 'time'
+
+export type TableCellProps = {
+
+};
 
 export type TableBaseColumn<T = InternalRowData> = {
     title?: TableColumnTitle,
     key: ColumnKey,
+    type: TableColumnType,
     linkable?: boolean,
-    render?: (rowData: T, rowIndex: number) => VNodeChild
+    render?: string | ((rowData: T, rowIndex: number) => VNodeChild)
 }
 
 export type TableColumnTitle =

@@ -17,7 +17,7 @@ class UsersController extends Controller
     {
         return Inertia::render('Users/Index', [
             'filters' => Request::all('search', 'role', 'trashed'),
-            'users' => Auth::user()->account->users()
+            'items' => Auth::user()->account->users()
                 ->orderByName()
                 ->filter(Request::only('search', 'role', 'trashed'))
                 ->get()
