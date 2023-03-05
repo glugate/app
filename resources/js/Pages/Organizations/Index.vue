@@ -35,11 +35,19 @@ const resourceInfo = buildResourceInfo('organizations', [
   },
   {
     type: "string",
-    key: "phone"
+    key: "phone",
+    render: 'text_with_icon',
+    renderProps: {
+      icon: 'PhoneFilled'
+    }
   },
   {
     type: "string",
-    key: "address"
+    key: "address",
+    render: 'text_with_icon',
+    renderProps: {
+      icon: 'MapMarker'
+    }
   }
 ])
 

@@ -39,7 +39,7 @@ export default {
         if(typeof render === 'function'){
           return render(row, index)
         } else {
-          return getTableCellRenderer(render)(row, column)
+          return getTableCellRenderer(render)(row, column, column.renderProps)
         }
       }
       switch(column.key) {
@@ -49,7 +49,7 @@ export default {
             {class: 'px-4 py-2'}, 
             makeLinkIf(doLink, `/${resourceInfo.slug_plural}/${id}`, h(
               'span',
-              {class: 'bg-primary-100 text-primary-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300'},
+              {class: 'bg-primary-100 text-primary-800 text-xs font-medium px-2 py-0.5 rounded dark:bg-primary-900'},
               row[column.key]
             ))
           )
@@ -57,7 +57,7 @@ export default {
           // Regular text
           return h(
             'td', 
-            {class: 'px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white'}, 
+            {class: 'px-4 py-2 font-medium text-gray-900 whitespace-nowrap'},
             makeLinkIf(doLink, `/${resourceInfo.slug_plural}/${id}`, h(
               'span',
               {class: ''},

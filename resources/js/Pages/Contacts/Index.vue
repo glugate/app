@@ -29,11 +29,18 @@ const resourceInfo = buildResourceInfo('contacts', [
   {
     key: "phone",
     type: 'string',
-    render: 'phone',
+    render: 'text_with_icon',
+    renderProps: {
+      icon: 'PhoneFilled'
+    }
   },
   {
     key: "address",
     type: 'string',
+    render: 'text_with_icon',
+    renderProps: {
+      icon: 'MapMarker'
+    }
   }
 ])
 

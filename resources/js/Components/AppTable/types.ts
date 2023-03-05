@@ -24,12 +24,17 @@ export type TableCellProps = {
 
 };
 
+export type TableRenderProps = {
+    icon?: string
+}
+
 export type TableBaseColumn<T = InternalRowData> = {
     title?: TableColumnTitle,
     key: ColumnKey,
     type: TableColumnType,
     linkable?: boolean,
     render?: string | ((rowData: T, rowIndex: number) => VNodeChild)
+    renderProps?: TableRenderProps
 }
 
 export type TableColumnTitle =
