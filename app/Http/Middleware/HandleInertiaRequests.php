@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Services\MenusService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Inertia\Middleware;
@@ -39,6 +40,11 @@ class HandleInertiaRequests extends Middleware
                 return [
                     'success' => $request->session()->get('success'),
                     'error' => $request->session()->get('error'),
+                ];
+            },
+            'app_data' => function () use ($request) {
+                return [
+                    'main_menu' => MenusService::getMainMenu()
                 ];
             },
             'meta' => function () use ($request) {

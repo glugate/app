@@ -14,13 +14,16 @@
               </template>
               <template #dropdown>
                 <div class="mt-2 py-2 bg-white rounded shadow-lg">
-                  <main-menu />
+                  <app-menu :menu="menu" :is-mobile="true" />
                 </div>
               </template>
             </dropdown>
           </div>
           <div class="md:text-md flex items-center justify-between p-4 w-full text-sm bg-white border-b md:px-12 md:py-0">
-            <div class="mr-4 mt-1 text-gray-400">Uno: {{ meta.version.uno }} - Laravel: {{ meta.version.laravel }} - PHP: {{ meta.version.php }} </div>
+            <div class="mr-4 mt-1 text-gray-400">
+              Uno: {{ meta.version.uno }} - Laravel: {{ meta.version.laravel }} - PHP: {{ meta.version.php }}
+            </div>
+
             <dropdown class="mt-1" placement="bottom-end">
               <template #default>
                 <div class="group flex items-center cursor-pointer select-none">
@@ -42,9 +45,10 @@
           </div>
         </div>
         <div class="md:flex md:flex-grow md:overflow-hidden ">
-          <the-sidebar class="hidden flex-shrink-0 pt-6 w-56 bg-white overflow-y-auto shadow md:block" />
+          <app-menu :menu="menu" class="hidden flex-shrink-0 pt-6 w-56 bg-white overflow-y-auto shadow md:block" />
           <div class="px-4 py-8 md:flex-1 md:p-12 md:overflow-y-auto" scroll-region>
             <flash-messages />
+            SEL: {{selectedItem}}
             <slot />
           </div>
         </div>
@@ -53,28 +57,22 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import { Link } from '@inertiajs/vue3'
 import Icon from '@/Shared/Icon.vue'
 import Logo from '@/Shared/Logo.vue'
 import Dropdown from '@/Shared/Dropdown.vue'
-import MainMenu from '@/Shared/MainMenu.vue'
 import FlashMessages from '@/Shared/FlashMessages.vue'
-import TheSidebar from "@/Components/TheSidebar.vue";
+import AppMenu from "@/Components/AppMenu/Index.vue";
+import {AppData} from '../types'
+import useMenu, {buildSlugs} from "@/Components/AppMenu/useMenu";
 
-export default {
-  components: {
-    TheSidebar,
-    Dropdown,
-    FlashMessages,
-    Icon,
-    Link,
-    Logo,
-    MainMenu,
-  },
-  props: {
-    auth: Object,
-    meta: Object,
-  },
-}
+const props = defineProps<{
+  auth: any,
+  meta: any,
+  app_data: AppData
+}>()
+
+const { menu, selectedItem } = useMenu()
+menu.value = buildSlugs(props.app_data.main_menu)
 </script>

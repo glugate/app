@@ -10,9 +10,10 @@ export const textWithIconRenderer = (row: RowData, col: TableColumn, props: Tabl
             'div',
             {class: 'flex items-center'},
             [
-                h(Suspense, h(AppIcon, {
-                    name: props.icon
-                })),
+                h(AppIcon, {
+                    name: props.icon,
+                    class: 'text-gray-300'
+                }),
                 row[col.key]
             ]
         )

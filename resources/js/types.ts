@@ -8,7 +8,29 @@ export type ResourceInfo = {
     columns: TableColumns
 };
 
+export type AppData = {
+    main_menu : IMenu
+}
+
 export interface IResourceFilters {
     search: string,
     trashed: boolean
 }
+
+export type AppMenuItem = {
+    name: string,
+    label: string,
+    slug: string,
+    fullSlug: string,
+    icon: string,
+    children: AppMenuItem[]
+    parent?: AppMenuItem,
+    isSelected?: boolean,
+}
+
+export interface IMenu {
+    name: string,
+    items: AppMenuItem[],
+    isMobile?: boolean,
+}
+

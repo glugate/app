@@ -73,6 +73,11 @@ Route::get('organizations', [OrganizationsController::class, 'index'])
     ->name('organizations')
     ->middleware('auth');
 
+// Redirect list to main route
+Route::get('organizations/list', function (){
+    return redirect()->route('organizations');
+});
+
 Route::get('organizations/create', [OrganizationsController::class, 'create'])
     ->name('organizations.create')
     ->middleware('auth');
@@ -106,6 +111,11 @@ Route::put('organizations/{organization}/restore', [OrganizationsController::cla
 Route::get('contacts', [ContactsController::class, 'index'])
     ->name('contacts')
     ->middleware('auth');
+
+// Redirect list to main route
+Route::get('contacts/list', function (){
+    return redirect()->route('contacts');
+});
 
 Route::get('contacts/create', [ContactsController::class, 'create'])
     ->name('contacts.create')
