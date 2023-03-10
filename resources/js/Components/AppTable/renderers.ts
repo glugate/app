@@ -1,18 +1,19 @@
 import {h, Suspense} from "vue";
 import {RowData, TableColumn, TableRenderProps} from "./types";
-import AppIcon from  '../AppIcon.vue'
+import AppIcon from  '@/Components/AppIcon.vue'
 
 export const textWithIconRenderer = (row: RowData, col: TableColumn, props: TableRenderProps) => {
+    const iconColor =  "icon-low"
     return h(
         'td',
-        { class: 'px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white' },
+        { class: 'px-4 py-2 font-medium text-gray-900 whitespace-nowrap' },
         h(
             'div',
             {class: 'flex items-center'},
             [
                 h(AppIcon, {
                     name: props.icon,
-                    class: 'text-gray-300'
+                    class: iconColor
                 }),
                 row[col.key]
             ]

@@ -15,7 +15,9 @@ body {
 }
 
 
-
+.icon-low {
+    color: #dedede;
+}
 
 
 .nav-link > .a {

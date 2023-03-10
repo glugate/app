@@ -1,5 +1,5 @@
 <template>
-  <svg class="w-5 h-5 mr-2" :class="svgClasses" v-html="svg" />
+  <span class="w-5 h-5 mr-2" :class="svgClasses" v-html="svg" />
 </template>
 
 <script lang="ts" setup>
