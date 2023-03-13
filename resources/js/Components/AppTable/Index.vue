@@ -1,8 +1,8 @@
 <template>
-  <section class="bg-gray-50 dark:bg-gray-900">
-    <div class="mx-auto">
-      <div class="relative overflow-hidden bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
-        <div class="flex flex-col px-4 py-3 space-y-3 lg:flex-row lg:items-center lg:justify-between lg:space-y-0 lg:space-x-4">
+  <section class="">
+    <div class="mx-auto bg-white">
+      <div class="relative overflow-hidden  shadow-md sm:rounded-lg">
+        <div class="flex flex-col px-4 py-3 space-y-3 lg:flex-row lg:items-center lg:justify-between lg:space-y-0 lg:space-x-4 mb-2">
           <div class="flex items-center flex-1 space-x-4">
             <h5>
               <span class="text-gray-500">All {{ resourceInfo.title_plural }}: </span>
@@ -14,7 +14,7 @@
             <secondary-button>Export</secondary-button>
           </div>
         </div>
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto bg-white">
           <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>

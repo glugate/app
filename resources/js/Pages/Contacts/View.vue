@@ -1,7 +1,7 @@
 <template>
   <div>
     <Head title="Organization"/>
-    <ResourceView :resource-info="resourceInfo" :resource-data="organization"></ResourceView>
+    <ResourceView :resource-info="resourceInfo" :resource-data="contact"></ResourceView>
   </div>
 </template>
 <script lang="ts">
@@ -18,7 +18,7 @@ import {IResourceFilters, ResourceInfo} from "../../types"
 import { resourceInfo } from './types'
 
 defineProps<{
-  organization: Object
+  contact: Object
 }>()
 
 </script>

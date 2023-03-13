@@ -11,7 +11,8 @@
                 'bg-white hover:bg-white': !link.active
               }"
               :href="link.url"
-             >{{ link.label }}</Link>
+              v-html="link.label"
+             ></Link>
       </template>
     </div>
   </div>

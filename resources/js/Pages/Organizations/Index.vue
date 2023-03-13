@@ -3,6 +3,7 @@
 </template>
 <script lang="ts">
 import Layout from "../../Layouts/Layout.vue"
+import { columns } from "./types";
 export default {
   layout: Layout
 };
@@ -16,39 +17,6 @@ const props = defineProps<{
   items: Object,
 }>()
 
-const resourceInfo = buildResourceInfo('organizations', [
-  {
-    type: "string",
-    key: "name",
-    linkable: true
-  },
-  {
-    type: "string",
-    key: "country",
-    /*render(row: RowData){
-      return 'OK'
-    }*/
-  },
-  {
-    type: "string",
-    key: "city"
-  },
-  {
-    type: "string",
-    key: "phone",
-    render: 'text_with_icon',
-    renderProps: {
-      icon: 'PhoneFilled'
-    }
-  },
-  {
-    type: "string",
-    key: "address",
-    render: 'text_with_icon',
-    renderProps: {
-      icon: 'MapMarker'
-    }
-  }
-])
+const resourceInfo = buildResourceInfo('organizations', columns)
 
 </script>

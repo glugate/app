@@ -24,7 +24,7 @@
   import pickBy from 'lodash/pickBy'
   import throttle from 'lodash/throttle'
   import AppTable from '../AppTable/Index.vue'
-  import ResourceHeader from '@/Shared/ResourceHeader.vue'
+  import ResourceHeader from '@/Components/Resource/ResourceHeader.vue'
   import SearchFilter from '@/Shared/SearchFilter.vue'
   import {IResourceFilters, ResourceInfo} from "../../types"
 
@@ -34,7 +34,7 @@
     resourceInfo: ResourceInfo
   }>()
   
-  const form = reactive({
+  var form = reactive({
     search: props.filters.search,
     trashed: props.filters.trashed,
   })
@@ -44,7 +44,7 @@
   }, 200));
   
   function reset() {
-    this.form = mapValues(this.form, () => null)
+    form = mapValues(form, () => null)
   }
 
 

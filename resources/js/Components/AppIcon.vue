@@ -1,5 +1,5 @@
 <template>
-  <span class="w-5 h-5 mr-2" :class="svgClasses" v-html="svg" />
+  <div v-bind="{ ...$attrs }" v-html="svg" />
 </template>
 
 <script lang="ts" setup>

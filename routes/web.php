@@ -125,6 +125,10 @@ Route::post('contacts', [ContactsController::class, 'store'])
     ->name('contacts.store')
     ->middleware('auth');
 
+Route::get('contacts/{contact}', [ContactsController::class, 'view'])
+    ->name('contacts.view')
+    ->middleware('auth');
+
 Route::get('contacts/{contact}/edit', [ContactsController::class, 'edit'])
     ->name('contacts.edit')
     ->middleware('auth');
