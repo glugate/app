@@ -10,9 +10,16 @@ const buildResourceInfo = (slugPlural: string, columns: TableColumns): ResourceI
         slug_singular: slugSingular,
         title_plural: startCase(slugPlural),
         title_singular: startCase(slugSingular),
-        columns
+        columns: initColumns(columns)
     }
     return info
+}
+
+const initColumns = (columns: TableColumns): TableColumns => {
+    return columns.map(col => {
+        col.title = col.title ?? startCase(col.key as string)
+        return col
+    })
 }
 
 export { buildResourceInfo }

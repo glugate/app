@@ -24,7 +24,12 @@
                   <label for="checkbox-all" class="sr-only">checkbox</label>
                 </div>
               </th>
-              <th v-for="column in resourceInfo.columns" scope="col" class="px-4 py-3">{{column.key}}</th>
+              <template v-for="column in resourceInfo.columns">
+                <template v-if="column.table">
+                  <th  scope="col" class="px-4 py-3">{{column.key}}</th>
+                </template>
+              </template>
+
             </tr>
             </thead>
             <tbody>
@@ -36,7 +41,11 @@
                     <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                   </div>
                 </td>
-                <table-cell v-for="column in resourceInfo.columns" :row="item" :column="column" :resource-info="resourceInfo" :index="index" />
+                <template v-for="column in resourceInfo.columns">
+                  <template v-if="column.table">
+                    <table-cell :row="item" :column="column" :resource-info="resourceInfo" :index="index" />
+                  </template>
+                </template>
 
               </tr>
             </template>

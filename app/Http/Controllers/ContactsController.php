@@ -24,11 +24,13 @@ class ContactsController extends Controller
                 ->through(fn ($contact) => [
                     'id' => $contact->id,
                     'name' => $contact->name,
+                    'email' => $contact->email,
+                    'country' => $contact->country,
                     'phone' => $contact->phone,
                     'address' => $contact->address,
                     'city' => $contact->city,
                     'deleted_at' => $contact->deleted_at,
-                    'organization' => $contact->organization ? $contact->organization->only('name') : null,
+                    'organization' => $contact->organization?->only('id', 'name'),
                 ]),
         ]);
     }
@@ -83,6 +85,7 @@ class ContactsController extends Controller
                 'region' => $contact->region,
                 'country' => $contact->country,
                 'postal_code' => $contact->postal_code,
+                'organization' => $contact->organization?->only('id', 'name'),
                 'deleted_at' => $contact->deleted_at,
             ],
             'organizations' => Auth::user()->account->organizations()

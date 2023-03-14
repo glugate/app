@@ -1,5 +1,6 @@
 import {VNodeChild} from "vue";
 import { ResourceInfo } from "../../types";
+import {VNode} from "@vue/runtime-core";
 
 export type ColumnKey = string | number
 export type InternalRowData = Record<string, unknown>
@@ -13,7 +14,7 @@ export type TableColumnType =
     | 'decimal'
     | 'enum'
     | 'float'
-    | 'foreignId' // Link to related object ex: Contact.account_id to the related Account
+    | 'relation' // Link to related object ex: Contact.account_id to the related Account
     | 'id'
     | 'integer'
     | 'string'
@@ -25,7 +26,8 @@ export type TableCellProps = {
 };
 
 export type TableRenderProps = {
-    icon?: string
+    icon?: string,
+    as?: string
 }
 
 export type TableBaseColumn<T = InternalRowData> = {
@@ -34,7 +36,9 @@ export type TableBaseColumn<T = InternalRowData> = {
     type: TableColumnType,
     linkable?: boolean,
     render?: string | ((rowData: T, rowIndex: number) => VNodeChild)
-    renderProps?: TableRenderProps
+    renderProps?: TableRenderProps,
+    table?: boolean // Should the column be displayed in tables
+    view?: boolean // Should the column be displayed resource view box
 }
 
 export type TableColumnTitle =
@@ -65,3 +69,5 @@ export type Paginate<T = any> = {
     to: number;
     total: number;
 };
+
+export type tableCellRenderer = (row: RowData, col: TableColumn,  props?: TableRenderProps) => VNode
