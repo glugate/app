@@ -39,6 +39,7 @@ export type TableBaseColumn<T = InternalRowData> = {
     renderProps?: TableRenderProps,
     table?: boolean // Should the column be displayed in tables
     view?: boolean // Should the column be displayed resource view box
+    sortable?: boolean
 }
 
 export type TableColumnTitle =

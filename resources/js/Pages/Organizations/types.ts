@@ -11,7 +11,8 @@ export const columns = [
         type: "string" as TableColumnType,
         key: "name",
         table: true,
-        linkable: true
+        linkable: true,
+        sortable: true,
     },
     {
         type: "string" as TableColumnType,
@@ -24,9 +25,6 @@ export const columns = [
         key: "country",
         table: true,
         view: true,
-        /*render(row: RowData){
-          return 'OK'
-        }*/
     },
     {
         type: "string" as TableColumnType,
@@ -39,6 +37,7 @@ export const columns = [
         key: "city",
         table: true,
         view: true,
+        sortable: true,
     },
     {
         type: "string" as TableColumnType,

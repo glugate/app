@@ -43,10 +43,11 @@ class Contact extends Model
         return $this->first_name.' '.$this->last_name;
     }
 
-    public function scopeOrderByName($query)
+    public function scopeOrderByName($query, $dir = 'asc')
     {
-        $query->orderBy('last_name')->orderBy('first_name');
+        $query->orderBy('first_name', $dir)->orderBy('last_name', $dir);
     }
+
 
     public function scopeFilter($query, array $filters)
     {

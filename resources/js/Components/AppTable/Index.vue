@@ -26,7 +26,11 @@
               </th>
               <template v-for="column in resourceInfo.columns">
                 <template v-if="column.table">
-                  <th  scope="col" class="px-4 py-3">{{column.key}}</th>
+                  <table-header
+                      :column="column"
+                      :sort-key="sortKey"
+                      :sortDir="sortDir"
+                      @sort="onSort" />
                 </template>
               </template>
 
@@ -68,13 +72,13 @@
 <script setup lang="ts">
 import { PropType } from 'vue';
 import type {Paginate, RowData } from './types';
-import Pagination from "./Pagination.vue";
-import TableCell from "./TableCell.vue";
 import {ResourceInfo} from "../../types";
-import PrimaryButton from "../PrimaryButton.vue";
-import SecondaryButton from "../SecondaryButton.vue";
+import {Pagination, PrimaryButton, SecondaryButton, TableCell, TableHeader} from "@/Components";
+import propsWithDefaults from "@/Components/AppTable/propsWithDefaults";
+import useSort from "@/Components/AppTable/useSort"
 
 const props = defineProps({
+  ...propsWithDefaults,
   items: {
     type: Object as PropType<Paginate<RowData>>,
     required: true,
@@ -84,6 +88,8 @@ const props = defineProps({
     required: true,
   }
 })
+
+const { onSort, sortDir, sortKey } = useSort()
 
 
 </script>

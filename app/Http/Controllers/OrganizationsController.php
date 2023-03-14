@@ -12,10 +12,13 @@ class OrganizationsController extends Controller
 {
     public function index()
     {
+        $sortKey = \request('sort_key', 'name');
+        $sortDir = \request('sort_dir', 'asc');
+
         return Inertia::render('Organizations/Index', [
             'filters' => Request::all('search', 'trashed'),
             'items' => Auth::user()->account->organizations()
-                ->orderBy('name')
+                ->orderBy($sortKey, $sortDir)
                 ->filter(Request::only('search', 'trashed'))
                 ->paginate(10)
                 ->withQueryString()

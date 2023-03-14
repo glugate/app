@@ -13,11 +13,18 @@ class ContactsController extends Controller
 {
     public function index()
     {
+        $sortKey = \request('sort_key', 'name');
+        $sortDir = \request('sort_dir', 'asc');
+
         return Inertia::render('Contacts/Index', [
             'filters' => Request::all('search', 'trashed'),
             'items' => Auth::user()->account->contacts()
                 ->with('organization')
-                ->orderByName()
+                ->when($sortKey == 'name', function ($q) use ($sortDir) {
+                    return $q->orderByName($sortDir);
+                }, function ($q) use ($sortDir, $sortKey) {
+                    return $q->orderBy($sortKey, $sortDir);
+                })
                 ->filter(Request::only('search', 'trashed'))
                 ->paginate(10)
                 ->withQueryString()

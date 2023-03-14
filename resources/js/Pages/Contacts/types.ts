@@ -12,22 +12,21 @@ export const columns = [
         key: "name",
         view: false, // Displayed in header
         table: true,
-        linkable: true
+        linkable: true,
+        sortable: true,
     },
     {
         type: "string" as TableColumnType,
         key: "email",
         table: true,
         view: true,
+        sortable: true,
     },
     {
         type: "string" as TableColumnType,
         key: "country",
         table: true,
         view: true,
-        /*render(row: RowData){
-          return 'OK'
-        }*/
     },
     {
         type: "string" as TableColumnType,
@@ -69,6 +68,7 @@ export const columns = [
         render: 'relation',
         view: true,
         table: true,
+        sortable: true,
     },
 ];
 
