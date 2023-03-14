@@ -1,41 +1,81 @@
 <template>
   <li>
-    <button @click="onClick" type="button" class="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group focus:bg-primary-100 hover:bg-primary-100" aria-controls="dropdown-pages" data-collapse-toggle="dropdown-pages">
-      <app-icon :name="item.icon" class="w-5 h-5 mr-2 text-gray-600" />
+    <button @click.stop="onClick"
+            type="button"
+            :class="{[activeClasses]: isActive, [regularClasses]: true}"
+            aria-controls="dropdown-pages"
+            data-collapse-toggle="dropdown-pages">
+      <app-icon v-if="item.icon" :name="item.icon" class="w-5 h-5 mr-2 text-gray-600" />
       <template v-if="hasChildren">
         <div class="flex-1 ml-2 text-left whitespace-nowrap">{{item.label}}</div>
       </template>
       <template v-else>
-        <Link @click="onClick" :href="`/${item.fullSlug}`" class="flex-1 ml-2  text-left whitespace-nowrap">{{item.label}}</Link>
+        <Link @click.stop="onClick"
+              :href="`/${item.fullSlug}`"
+              class="flex-1 text-left whitespace-nowrap"
+              :class="[item.icon ? 'ml-2' : 'ml-9']"
+        >
+          {{item.label}}
+        </Link>
       </template>
       <app-icon v-if="hasChildren" :name="!isExpanded ? 'ChevronRight' : 'ChevronDown'" class="w-5 h-5" />
     </button>
+    <Transition name="collapse" >
     <ul v-if="hasChildren" v-show="isExpanded" id="dropdown-pages" class="py-2 space-y-2">
-      <sub-menu-item v-for="child in item.children" :item="child" />
+      <menu-item v-for="child in item.children" :item="child" :level="level+1" @select="onSelect" :selected-items="selectedItems" />
     </ul>
+    </Transition>
   </li>
 </template>
 <script setup lang="ts">
 import {Link, usePage} from '@inertiajs/vue3'
 import AppIcon from  '../AppIcon.vue'
-import {IMenu, AppMenuItem} from "@/types";
-import SubMenuItem from "@/Components/AppMenu/SubMenuItem.vue";
-import {computed, ref} from "vue";
-import useMenu from "@/Components/AppMenu/useMenu";
+import {AppMenuItem} from "@/types";
+import {computed, defineEmits, ref} from "vue";
 
 const props = defineProps<{
   item: AppMenuItem,
-  menu: IMenu,
+  selectedItems?: number[],
+  level: number,
   initExpanded?: boolean,
 }>()
+
+interface IMenuItemEmits {
+  (e: 'select', item: AppMenuItem) : void
+}
+
+const emit = defineEmits<IMenuItemEmits>()
+
 const { url } = usePage()
-const { setSelected } = useMenu()
 const isExpanded = ref(props.initExpanded)
 const hasChildren = computed(() => { return props.item.children?.length })
+const isActive = computed(() => {
+  return props.selectedItems?.includes(props.item.id)
+})
 
 const onClick = () => {
+  console.log("menuItem onClick")
   isExpanded.value = !isExpanded.value
-  //setSelected(props.item)
+  emit('select', props.item)
 }
+
+const onSelect = (item: AppMenuItem) => {
+  console.log("MenuItem onSelect", item.name)
+  emit('select', item)
+}
+
+const activeClasses = computed(() => {
+  return props.level === 0 ? 'bg-gray-200' : 'underline'
+})
+
+const regularClasses = computed(() => {
+  let all = 'flex items-center  w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group '
+  if(props.level === 0){
+    all += ' p-2 hover:bg-gray-200'
+  } else {
+    all += ' px-2'
+  }
+  return all
+})
 
 </script>

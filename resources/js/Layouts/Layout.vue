@@ -64,7 +64,7 @@ import Dropdown from '@/Shared/Dropdown.vue'
 import FlashMessages from '@/Shared/FlashMessages.vue'
 import AppMenu from "@/Components/AppMenu/Index.vue";
 import {AppData} from '../types'
-import useMenu, {buildSlugs} from "@/Components/AppMenu/useMenu";
+import useMenu, {initMenu} from "@/Components/AppMenu/useMenu";
 
 const props = defineProps<{
   auth: any,
@@ -73,5 +73,5 @@ const props = defineProps<{
 }>()
 
 const { menu, selectedItem } = useMenu()
-menu.value = buildSlugs(props.app_data.main_menu)
+menu.value = initMenu(props.app_data.main_menu)
 </script>

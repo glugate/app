@@ -17,20 +17,20 @@ export interface IResourceFilters {
     trashed: boolean
 }
 
-export type AppMenuItem = {
+export interface AppMenuItem {
+    id: number,
     name: string,
     label: string,
     slug: string,
     fullSlug: string,
     icon: string,
     children: AppMenuItem[]
-    parent?: AppMenuItem,
+    parentIds: number[],
     isSelected?: boolean,
 }
 
 export interface IMenu {
     name: string,
     items: AppMenuItem[],
-    isMobile?: boolean,
 }
 

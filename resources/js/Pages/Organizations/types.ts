@@ -68,4 +68,4 @@ export const columns = [
 
 ];
 
-export const resourceInfo = buildResourceInfo('organisations', columns)
+export const resourceInfo = buildResourceInfo('organizations', columns)

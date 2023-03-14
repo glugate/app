@@ -1,6 +1,6 @@
 <template>
     <div class="bg-white mb-2 rounded shadow p-3 flex items-center">
-        <app-icon name="account" class="h-16 w-16 text-primary-500"></app-icon>
+        <app-icon :name="resourceInfo.slug_singular" class="h-16 w-16 text-primary-500"></app-icon>
         <div>
             <div class="text-gray-400">{{resourceInfo.title_singular}}</div>
             <div class="text-xl">{{resourceData.name}}</div>
@@ -22,7 +22,9 @@
                 </template>
             </template>
         </div>
-        <div class="bg-white mb-2 rounded shadow p-3 w-full md:mb-0"></div>
+        <div class="bg-white mb-2 rounded shadow p-3 w-full md:mb-0">
+          <uno-tabs />
+        </div>
     </div>
 </template>
 
@@ -31,6 +33,7 @@ import type { ResourceInfo } from '@/types'
 import AppIcon from '../AppIcon.vue';
 import { RowData } from '../AppTable/types';
 import FieldRenderer from "@/Components/Resource/FieldRenderer.vue";
+import {UnoTabs} from "@/Components"
 
 interface IPorps {
     resourceInfo: ResourceInfo,
